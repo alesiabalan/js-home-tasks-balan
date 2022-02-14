@@ -4,7 +4,7 @@ function Vowel(str){
 
     str.forEach(e => {
         var mass = ['а', 'у','о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'];
-        if(mass.indexOf(e) != -1){
+        if(mass.indexOf(e) !== -1){
             i++;
         }
     });

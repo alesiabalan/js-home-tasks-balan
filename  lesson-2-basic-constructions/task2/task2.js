@@ -1,21 +1,23 @@
-var name = prompt('Введите имя: '),
-    surname = prompt('Введите фамилию: '),
-    dadname = prompt('Введите отчество: '),
-    old = prompt('Введите возраст: '),
-    sexQ = confirm('Вы мужчина?'),
-    pension;
+var name,
+    surname,
+    dadname,
+    old;
 
-if (sexQ === true) {
-    sex = 'мужской';
-} else {
-    sex = 'женский';
-}
-
-if ((sexQ = true && old > 65) || (sexQ = false && old > 60)) {
-    pension = 'да';
-} else {
-    pension = 'нет';
-}
+do {
+    name = prompt('Введите имя: ');
+} while (!name);
+do {
+    surname = prompt('Введите фамилию: ');
+} while (!surname);
+do {
+    dadname = prompt('Введите отчество: ');
+} while (!dadname);
+do {
+    old = prompt('Введите возраст: ');
+} while (!old || isNaN(old) || (old > 100));
+var pension = ((sexQ && old > 65) || (!sexQ && old > 60)) ? 'да' : 'нет';
+var sexQ = confirm('Вы мужчина?');
+var sex = (sexQ) ? 'мужской' : 'женский';
 
 alert(`ваше ФИО: ${surname} ${name} ${dadname}
 ваш возраст в годах: ${old}
