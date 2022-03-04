@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About drinks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form class="drinks" id="drinks">
+    <h2 class="drinks_title">Об алкогольных напитках</h2>
+    <div class="drinks_window">
+        <div class="drinks_window_item"><input id="name-cocktail" type="text" placeholder="Введите название напитка" style="width: 250px; height: 30px"></div>
+        <div class="drinks_window_item"><input id="alc-cocktail" type="text" placeholder="Он алкогольный?" style="width: 250px; height: 30px;"></div>
+        <div class="drinks_window_item"><textarea id="rec-cocktail" placeholder="Рецепт коктейля" style="width: 250px; height: 60px;"></textarea></div>
+    </div>
+    <div class="drinks_button_menu">
+        <button class="drinks_button" id='add-cocktail'>Ввод</button>
+        <button class="drinks_button" id='get-cocktail'>Вывод</button>
+        <button class="drinks_button" id='delete-cocktail'>Удаление</button>
+        <button class="drinks_button btn_active" id='all-cocktails'>Список</button>
+    </div>
+</form>
+<div id="cocktails"></div>
+    <script src="HashStorage.js"></script>
+</body>
+</html>
