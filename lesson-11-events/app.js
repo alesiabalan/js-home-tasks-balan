@@ -1,76 +1,55 @@
-'use strict'
+'use strict';
+(function() {
 
-var DragImage = null;
-var DragShiftX;
-var DragShiftY;
+    var DragImage = null;
+    var DragShiftX;
+    var DragShiftY;
 
-var list = document.getElementById("list");
-var images = document.getElementsByTagName('img');
+    var list = document.getElementById("list");
+    var images = document.getElementsByTagName('img');
 
-for (var i = 0; i < images.length; i++) {
-    AddEventHandler(images[i], "mousedown", DragStart, false);
-};
+    for (var i = 0; i < images.length; i++) {
+        images[i].addEventListener("mousedown", DragStart, false);
+    };
 
+    function DragStart(EO) {
+        EO = EO || window.event;
+        EO.preventDefault();
 
+        DragImage = EO.target;
 
-function DragStart(EO) {
-    EO = EO || window.event;
-    PreventDefault(EO);
+        list.appendChild(DragImage);
+        DragImage.style.position = "absolute";
 
-    DragImage = EO.target;
+        var MouseX = EO.pageX;
+        var MouseY = EO.pageY;
 
-    list.appendChild(DragImage);
-    DragImage.style.position = "absolute";
+        var ImageX = DragImage.offsetLeft;
+        var ImageY = DragImage.offsetTop;
 
-    var MouseX = EO.pageX;
-    var MouseY = EO.pageY;
+        DragShiftX = MouseX - ImageX;
+        DragShiftY = MouseY - ImageY;
 
-    var ImageX = DragImage.offsetLeft;
-    var ImageY = DragImage.offsetTop;
+        window.onmousemove = DragMove;
+        window.onmouseup = DragStop;
+    };
 
-    DragShiftX = MouseX - ImageX;
-    DragShiftY = MouseY - ImageY;
+    function DragMove(EO) {
+        EO = EO || window.event;
+        EO.preventDefault();
 
-    window.onmousemove = DragMove;
-    window.onmouseup = DragStop;
-};
+        var MouseX = EO.pageX;
+        var MouseY = EO.pageY;
 
-function DragMove(EO) {
-    EO = EO || window.event;
-    PreventDefault(EO);
+        var ImageX = MouseX - DragShiftX;
+        var ImageY = MouseY - DragShiftY;
 
-    var MouseX = EO.pageX;
-    var MouseY = EO.pageY;
+        DragImage.style.left = ImageX + "px";
+        DragImage.style.top = ImageY + "px";
+    };
 
-    var ImageX = MouseX - DragShiftX;
-    var ImageY = MouseY - DragShiftY;
-
-    DragImage.style.left = ImageX + "px";
-    DragImage.style.top = ImageY + "px";
-};
-
-function DragStop() {
-    window.onmousemove = null;
-    window.onmouseup = null;
-};
-
-function AddEventHandler(Elem, EventName, HandlerFunc, CaptureFlag) {
-    if (Elem.addEventListener)
-        Elem.addEventListener(EventName, HandlerFunc, CaptureFlag);
-    else if (!CaptureFlag)
-    {
-        var EventName2 = 'on' + EventName;
-        if (Elem.attachEvent)
-        {
-            var IEHandlerF = function () {
-                HandlerFunc.call(Elem);
-            };
-            Elem.attachEvent(EventName2, IEHandlerF);
-            var StoreName = "__IEHandlerF_" + EventName;
-            Elem[StoreName] = IEHandlerF;
-        }
-        else
-        if (!Elem[EventName2])
-            Elem[EventName2] = HandlerFunc;
-    }
-}
+    function DragStop() {
+        window.onmousemove = null;
+        window.onmouseup = null;
+    };
+})();
