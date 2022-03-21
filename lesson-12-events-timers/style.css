@@ -1,0 +1,53 @@
+#wrapper {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #FFDAB9;
+    position: relative;
+}
+
+.circleNumbers {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1E90FF;
+    position: absolute;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+
+.elWatch {
+    width: 120px;
+    height: 30px;
+    position: absolute;
+    text-align: center;
+    line-height: 30px;
+    font-size: 25px;
+    color: black;
+}
+
+.hourHand {
+    width: 9px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: black;
+}
+
+.minuteHand {
+    width: 5px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: black;
+}
+
+.secondHand {
+    width: 2px;
+    height: 145px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: red;
+}
