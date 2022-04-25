@@ -1,7 +1,6 @@
 'use strict';
 
 var drinkStorage = new THashStorage();
-var drinkLocalStorage = new TLocalStorage();
 
 function addDrink() {
   var drinkName = prompt('Введите название напитка', 'Test Drink').toLowerCase().trim();
@@ -10,12 +9,11 @@ function addDrink() {
   if (drinkName) {
     fHash.recipe = prompt('Введите рецепт приготовления напитка', 'Test Recipe');
     fHash.alcohol = confirm('Ваш напиток алкогольный?') ? 'да' : 'нет';
-    drinkLocalStorage.getLocalStorage();
-    drinkStorage.addValue(drinkName, fHash);
-    drinkLocalStorage.setLocalStorage();
+    return drinkStorage.addValue(drinkName, fHash);
   } else {
     alert('Ввод отменен!')
   }
+  drinkStorage.reset();
 }
 
 function showDrinkInfo() {
@@ -24,7 +22,6 @@ function showDrinkInfo() {
   var resultHTML = '';
 
   if (getDrinkInfo) {
-    drinkLocalStorage.getLocalStorage();
     var print1 = 'Напиток: ' + drinkName + '<br>';
     var print2 = 'Алкогольный: ' + getDrinkInfo.alcohol + '<br>';
     var print3 = 'Рецепт приготовления: ' + getDrinkInfo.recipe + '<br>';
@@ -38,13 +35,11 @@ function showDrinkInfo() {
 
 function removeDrink() {
   var drinkName = prompt('Какой напиток удалить?').toLowerCase().trim();
-  drinkLocalStorage.getLocalStorage();
   var delDrinkInfo = drinkStorage.deleteValue(drinkName);
   var resultHTML = '';
 
   if (delDrinkInfo) {
     resultHTML = 'Информация о напитке ' + drinkName + ' удалена';
-    drinkLocalStorage.setLocalStorage();
   } else {
     resultHTML = 'Ошибка! Нет такого напитка';
   }
@@ -52,7 +47,6 @@ function removeDrink() {
 }
 
 function showDrinksMenu() {
-  drinkLocalStorage.getLocalStorage();
   var showMenuInfo = drinkStorage.getKeys();
   var resultHTML = '';
 
