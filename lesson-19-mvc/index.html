@@ -1,0 +1,23 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="manage-drinks">
+      <input type='button' value='Добавить напиток' onclick='addDrink()'>
+      <input type='button' value='Показать информацию о напитке' onclick='showDrinkInfo()'>
+      <input type='button' value='Удалить напиток' onclick='removeDrink()'>
+      <input type='button' value='Показать меню напитков' onclick='showDrinksMenu()'>
+      <div id="message" class="drink-info"></div>
+    </div>
+    <script src="HashStorage.js"></script>
+    <script src="LocalStorage.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
